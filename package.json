@@ -1,0 +1,20 @@
+{
+  "name": "image-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "imageLambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrunkOfUkuleles/image-lambda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrunkOfUkuleles/image-lambda/issues"
+  },
+  "homepage": "https://github.com/TrunkOfUkuleles/image-lambda#readme"
+}
