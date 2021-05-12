@@ -1,12 +1,36 @@
 'use strict';
 
-exports.handler = async (event) => {
-    console.log('trigger:', event);
+
+console.log('Loading function');
+        
+const aws = require('aws-sdk');
+
+const s3 = new aws.S3();
+
+async function reload(){
+  try {
+    const set = await s3.getObject({
+      Bucket: "pubb-buck", 
+      Key: 'images.json'
+    }).promise();
+     console.log("WILL IT SET?", set)
+    return  {
+      statusCode: 200,
+      body: JSON.parse(set.Body.toString("utf-8")),
+    };
+  }catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
+}
+
+let trial =  await reload();
+console.log(trial)
+exports.handler = (event, context, callback) => {
+  console.log(event.Records[0].s3.object)
   
-    const a = event.body.a || 5;
-    const b = event.body.b || 10;
   
-    const sum = a + b;
-  
-    return JSON.stringify(`the sum of a + b is ${sum}`);
-  }
+    console.log('event details', JSON.stringify(event.Records[0].s3.object, undefined, 2))
+
+  // return 's3 bucket trigger this';
+}
